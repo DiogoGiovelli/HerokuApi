@@ -3,15 +3,17 @@ using System;
 using HerokuApi.infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HerokuApi.Migrations
 {
     [DbContext(typeof(ApiContext))]
-    partial class ApiContextModelSnapshot : ModelSnapshot
+    [Migration("20220121020609_adicionado datas")]
+    partial class adicionadodatas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +45,9 @@ namespace HerokuApi.Migrations
                         .HasColumnType("numeric")
                         .HasColumnName("price");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime>("UpdateAt")
                         .HasColumnType("timestamp without time zone")
-                        .HasColumnName("updatedat");
+                        .HasColumnName("updateat");
 
                     b.HasKey("Id");
 

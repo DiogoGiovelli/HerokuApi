@@ -9,6 +9,7 @@ namespace HerokuApi.infra.Models
     [Table("produto")]
     public class Produto
     {
+        [System.Text.Json.Serialization.JsonIgnore]
         [Column("id")]
         public int Id { get; set; }
 
@@ -20,5 +21,13 @@ namespace HerokuApi.infra.Models
 
         [Column("price")]
         public decimal Price { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        [Column("createdat")]
+        public DateTime CreatedAt { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        [Column("updatedat")]
+        public DateTime UpdatedAt { get; set; }
     }
 }
