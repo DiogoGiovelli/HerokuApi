@@ -30,7 +30,7 @@ namespace HerokuApi
         {
             services.AddEntityFrameworkNpgsql().AddDbContext<ApiContext>(options =>
             {
-                options.UseNpgsql($"Server=ec2-54-221-74-111.compute-1.amazonaws.com;User Id=wizfmglzsglrem;Password=5132556a5def47879902e6a7138b2ca3a5e085841b8c6914ad492a58fb4836c6;Database=ddrft923sh0l;sslmode=Require;TrustServerCertificate=True;");
+                options.UseNpgsql(Configuration.GetValue<string>("DATABASE"));
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
