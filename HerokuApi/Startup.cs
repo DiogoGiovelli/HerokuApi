@@ -1,7 +1,9 @@
+using HerokuApi.infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +28,10 @@ namespace HerokuApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddEntityFrameworkNpgsql().AddDbContext<ApiContext>(options =>
+            {
+                options.UseNpgsql($"Server=ec2-54-221-74-111.compute-1.amazonaws.com;User Id=wizfmglzsglrem;Password=5132556a5def47879902e6a7138b2ca3a5e085841b8c6914ad492a58fb4836c6;Database=ddrft923sh0l;sslmode=Require;TrustServerCertificate=True;");
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
